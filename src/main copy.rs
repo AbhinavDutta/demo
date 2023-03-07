@@ -13,7 +13,7 @@ use ohlc_lib::comparators::comp_closeprice;
 
 fn main() {
     
-    let  original_data:Vec<(String, f64, i64)> = reading_json("data/dataset-a.txt");  //source of input
+    let  original_data:Vec<(String, f64, i64)> = reading_json("data/dataset-b.txt");  //source of input
     let  dataframe:HashMap<String, Vec<(f64,i64)>>  = break_by_symbols(&original_data);
     let  w = 5i64;  //time window in minutes
     
@@ -22,7 +22,7 @@ fn main() {
     let mut open:HashMap<String, VecDeque<f64>> =  wrapper_ohlc(&dataframe, w,&comp_openprice);
     let mut close:HashMap<String, VecDeque<f64>> = wrapper_ohlc(&dataframe, w,&comp_closeprice);
      
-    write_json("data/ohlc-5m-a.txt",&original_data,&mut open,&mut low,&mut high,&mut close); //destination of output
+    write_json("data/ohlc-5m-b.txt",&original_data,&mut open,&mut low,&mut high,&mut close); //destination of output
     
 }
 
